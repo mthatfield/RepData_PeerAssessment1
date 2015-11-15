@@ -1,10 +1,4 @@
----
-title: "reproducible proj 1"
-output: html_document
----
-Template for the first peer assessment assignment in Reproducible Research. The code for the first section was completed as such. 
-
-```{r}
+####peer assesment 1
 
 library(ggplot2)
 
@@ -41,15 +35,9 @@ colnames(daystepframe) <- c("steps", "date")
 ggplot(data=daystepframe,aes(x=steps))+
     geom_histogram()
 
-```
-From this the mean and median are
-```{r}
-mean(daystepframe$steps)
-median(daystepframe$steps)
-```
-For the second portion of the assigment the code is as such. 
 
-```{r}
+####### 2
+
 
 meandsf <- mean(daystepframe$steps)
 
@@ -71,17 +59,14 @@ names(timeavs)<- c("steps","interval")
 ggplot(data=timeavs,aes(x=interval,y=steps))+
     geom_line()
 
+
+####### 3
+
 which(timeavs$steps==max(timeavs$steps))
-
-```
-
-So this is the interval with the highest average number of steps. 
-```{r}
 timeavs$interval[104]
-```
 
-For the third part of the assignment this is the code. I used the average of the unimputed values for my NA replacement. 
-```{r}
+sum(is.na(dat$steps))
+
 datimp <- dat
 
 nas <- which(is.na(datimp$steps))
@@ -118,21 +103,12 @@ for(i in 1:length(unique(fullimpdat$date))){
 daystepframeimp <- cbind(daystepframeimp,uniquedatesimp)
 colnames(daystepframeimp) <- c("steps", "date")
 
-
+median(daystepframeimp$steps)
 
 ggplot(data=daystepframeimp,aes(x=steps))+
     geom_histogram()
 
-```
-As I used the average of the unimptuted values the average does not change but the median does. 
-```{r}
-mean(daystepframeimp$steps)
-median(daystepframeimp$steps)
-```
-
-For the fourth part of the assignment this is the code. 
-
-```{r}
+######## 4
 fullimpdat <- cbind(fullimpdat,rep(0,times=nrow(fullimpdat)))
 
 names(fullimpdat)[4]<- "weekday"
@@ -174,6 +150,7 @@ names(timeavse)<- c("steps","interval")
 ggplot(data=timeavsd,aes(x=interval,y=steps))+
     geom_line()+
     geom_line(data=timeavse,aes(x=interval,y=steps),color="yellow")
-```
-from this we can see that the weekend values (in yellow) appear to be lower in the morning, but higher in the afternoon. 
 
+
+
+   
